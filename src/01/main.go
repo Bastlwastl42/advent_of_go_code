@@ -25,6 +25,9 @@ func main() {
 	for _, e := range input_lines {
 		//make integers
 		e_int, _ := strconv.Atoi(e)
+		if e_int == 0 {
+			continue
+		}
 		integers = append(integers, e_int)
 	}
 	//print(integers)
@@ -33,12 +36,32 @@ func main() {
 		//print(remainder)
 		_, is_found := Find(integers, remainder)
 		if is_found {
-			fmt.Printf("Found match with %d and %d. Product is %d", remainder, e, remainder*e)
+			fmt.Printf("Found match with %d and %d. Product is %d\n", remainder, e, remainder*e)
 			break
 		}
 	}
-	for _, e := range integers{
-		first_remainder := 2020 -e
-		
+	break_flag := false
+	for _, e := range integers {
+		for _, f := range integers {
+			if e+f > 2020 {
+				continue
+			}
+			for _, g := range integers {
+				if e+f+g == 2020 {
+					fmt.Printf("Found match with %d, %d, and %d. Product is %d\n",
+						e, f, g, e*f*g)
+					break_flag = true
+					break
+				}
+
+			}
+			if break_flag {
+				break
+			}
+		}
+		if break_flag {
+			break
+		}
+
 	}
 }
