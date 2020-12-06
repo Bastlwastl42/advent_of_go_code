@@ -13,7 +13,7 @@ func main() {
 	wd, _ := os.Getwd()
 	act_folder := path.Join(wd, "src", "02")
 	input_lines := common.Load_file_content(act_folder)
-	print(input_lines)
+	//print(input_lines)
 	valid_founds := 0
 	valid_founds_part_two := 0
 	for _, line := range input_lines {
